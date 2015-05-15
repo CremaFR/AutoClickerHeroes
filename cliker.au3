@@ -1,70 +1,74 @@
 #cs ----------------------------------------------------------------------------
 
 	AutoIt Version : 3.3.8.1
-	Auteur:         MonNom
+	Auteur:         Crema
 
-	Fonction du Script :
-	Modèle de Script AutoIt.
+	Fonction of the Script :
+	A simple auto cliker for Cliker Heroes
 
 #ce ----------------------------------------------------------------------------
 
-; Début du script - Ajouter votre code ci-dessous.
 
-
+; Hotkey of the autoCliker
 HotKeySet("!a", "Quit") ;Alt-a
-HotKeySet("!c", "Maintien_bonus") ;Alt-c
+HotKeySet("!c", "Keep_bonus") ;Alt-c
 HotKeySet("!r", "Run_bonus") ;Alt-r
-$w = 0 ;variable pour finir la boucle
-;MsgBox(1,"Script", "début du script Start", 5) ;information de depart
 
+
+;This positions depends on your windows size. this is for the default size.
+
+;position min of the window
 $x_min = 661
 $y_min = 120
 
+;position max of the window
 $x_max = 1050
 $y_max = 550
 
+
+;time beetwen 2 clicks
 $sleep_time = 1;
+$keep_mode_time = 5000;
 
-
-;tout dessous est useless =)
+$w = 0 ;var for the end of app
+;while function quit isn't called
 While $w = 0
-
+	;randomly click into the window (to catch some bonuses)
 	ControlClick("Clicker Heroes", "", "", "left", 1, Random($x_min, $x_max, 1), Random($y_min, $y_max, 1))
 	Sleep($sleep_time);
 WEnd
 
-MsgBox(1, "Script", "le script prend fin", 1) ;information de fin
+;---------------------------------------
+;---------------------------------------
+;
+;FUNCTION OF THE APP DO NOT TOUCH UNLESS YOU ARE AWARE OF WHAT YOU DOING !!
+;
+;---------------------------------------
+;---------------------------------------
 
-
+;Quit the app and shows a splashText during 1s
 Func Quit()
-	SplashTextOn("", "Fermeture du script en cours,  Veuillez patienter ...", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
-
-	; Pause de 3 secondes.
+	SplashTextOn("", "End of auto Cliker !! ,  See you soon !! ", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
 	Sleep(1000)
 	$w = 1;
 	; Fermeture du splash.
 	SplashOff()
-
 	Exit
 EndFunc   ;==>Quit
 
-Func Maintien_bonus()
-	SplashTextOn("", "Switch to mode maintien", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
-
-	; Pause de 3 secondes.
+;Click sometimes to keep the bonus of Juggernaut
+Func Keep_bonus()
+	SplashTextOn("", "Switch to keep bonus mode", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
 	Sleep(1000)
-	$sleep_time = 5000;
-	; Fermeture du splash.
+	$sleep_time = $keep_mode_time;
 	SplashOff()
-EndFunc   ;==>Maintien_bonus
+EndFunc   ;==>Keep_bonus
 
+;spam click enjoy !!
 Func Run_bonus()
-	SplashTextOn("", "Switch to mode Run", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
-
-	; Pause de 3 secondes.
+	SplashTextOn("", "Switch to run mode", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
 	Sleep(1000)
 	$sleep_time = 1;
-	; Fermeture du splash.
 	SplashOff()
-EndFunc   ;==>Run
+EndFunc   ;==>Run_bonus
 
