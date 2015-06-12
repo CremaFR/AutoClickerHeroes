@@ -1,5 +1,5 @@
-# AutoClikerHeroes
-An auto cliker for Cliker Heroes
+# AutoClickerHeroes
+An auto cliker for Clicker Heroes
 
 ###How to use it
 
