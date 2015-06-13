@@ -13,6 +13,7 @@
 HotKeySet("!a", "Quit") ;Alt-a
 HotKeySet("!c", "Keep_bonus") ;Alt-c
 HotKeySet("!r", "Run_bonus") ;Alt-r
+HotKeySet("!n", "Ascension") ;Alt-n
 
 
 ;This positions depends on your windows size. this is for the default size.
@@ -26,16 +27,22 @@ $x_max = 1050
 $y_max = 550
 
 
-;time beetwen 2 clicks
-$sleep_time = 1;
+;time beetween 2 clicks
+$sleep_time = 75;
 $keep_mode_time = 5000;
 
 $w = 0 ;var for the end of app
+$ascension = 0; use to know if we are in ascension mode
+
 ;while function quit isn't called
 While $w = 0
 	;randomly click into the window (to catch some bonuses)
 	ControlClick("Clicker Heroes", "", "", "left", 1, Random($x_min, $x_max, 1), Random($y_min, $y_max, 1))
 	Sleep($sleep_time);
+	if $ascension == 1 Then
+		MouseWheel("down",10)
+		ControlClick("Clicker Heroes", "", "", "left", 1, 101, 502)
+	EndIf
 WEnd
 
 ;---------------------------------------
@@ -61,6 +68,7 @@ Func Keep_bonus()
 	SplashTextOn("", "Switch to keep bonus mode", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
 	Sleep(1000)
 	$sleep_time = $keep_mode_time;
+	$ascension = 0;
 	SplashOff()
 EndFunc   ;==>Keep_bonus
 
@@ -69,6 +77,15 @@ Func Run_bonus()
 	SplashTextOn("", "Switch to run mode", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
 	Sleep(1000)
 	$sleep_time = 1;
+	$ascension = 0;
 	SplashOff()
-EndFunc   ;==>Run_bonus
+EndFunc
+
+Func Ascension()
+	SplashTextOn("", "Switch to Ascension mode", 450, 70, -1, -1, 0 + 1 + 16 + 32, "Times New Roman", 12, 800)
+	Sleep(1000)
+	$sleep_time = 1;
+	$ascension = 1;
+	SplashOff()
+EndFunc   ;==>Ascension
 
