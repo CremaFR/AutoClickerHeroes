@@ -4,7 +4,7 @@
 	Auteur:         Crema
 
 	Fonction of the Script :
-	A simple auto cliker for Cliker Heroes
+	A simple auto clicker for Clicker Heroes
 
 #ce ----------------------------------------------------------------------------
 
